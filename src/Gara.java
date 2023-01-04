@@ -1,20 +1,20 @@
 import java.io.Serializable;
 
 public class Gara implements Serializable {
-    string data;
-    string emriShoferit;
-    string emriSkuadres;
+    String data;
+    String emriShoferit;
+    String emriSkuadres;
     int pozicioni;
 
     Gara() {}; //konstruktori default
-    Gara(string data, string emriShoferit, string emriSkuadres, int pozicioni){
+    Gara(String data, String emriShoferit, String emriSkuadres, int pozicioni){
         this.data = data;
         this.emriShoferit = emriShoferit;
         this.emriSkuadres = emriSkuadres;
         this.pozicioni = pozicioni;
     }
 
-    public boolean addNewGara(string data, string emriShoferit, string emriSkuadres, int pozicioni){
+    public boolean addNewGara(String data, String emriShoferit, String emriSkuadres, int pozicioni){
         this.data = data;
         this.emriShoferit = emriShoferit;
         this.emriSkuadres = emriSkuadres;
@@ -23,7 +23,7 @@ public class Gara implements Serializable {
         return true;
     }
 
-    public string getData() {
+    public String getData() {
         return data;
     }
 
@@ -31,11 +31,11 @@ public class Gara implements Serializable {
         return pozicioni;
     }
 
-    public string getEmriShoferit() {
+    public String getEmriShoferit() {
         return emriShoferit;
     }
 
-    public string getEmriSkuadres() {
+    public String getEmriSkuadres() {
         return emriSkuadres;
     }
 }
