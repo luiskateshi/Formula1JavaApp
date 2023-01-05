@@ -60,11 +60,10 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
     }
 
     public void addToFile(){
-        Gara g = new Gara("05/01/2023", "Hans Hamilton", "Mercedes Benz", 3);
-        races.add(g);
-        g = new Gara("05/01/2023", "Luis Hamilton", "Ford", 2);
-        races.add(g);
+        //Gara g = new Gara("05/01/2023", "Hans Hamilton", "Mercedes Benz", 3);
+        //races.add(g);
 
+        //per te shtuar garat nga memorja ne file
         try{
             new FileOutputStream("garat.txt", true).close();
             FileOutputStream fos = new FileOutputStream("garat.txt");
@@ -78,7 +77,21 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
             i.printStackTrace();
         }
 
-        System.out.println("Ruajtja e informacionit perfudnoi me sukses.");
+        //per te shtuar shoferat nga memorja ne file
+        try{
+            new FileOutputStream("garat.txt", true).close();
+            FileOutputStream fos = new FileOutputStream("garat.txt");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            for (Gara race : races) {
+                oos.writeObject(race);
+            }
+            fos.close();
+        }
+        catch (IOException i){
+            i.printStackTrace();
+        }
+
+        System.out.println("Ruajtja e informacionit ne file perfudnoi me sukses.");
     }
 
 }
