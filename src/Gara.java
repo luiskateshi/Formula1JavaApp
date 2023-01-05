@@ -14,7 +14,7 @@ public class Gara implements Serializable {
         this.pozicioni = pozicioni;
     }
 
-    public boolean addNewGara(String data, String emriShoferit, String emriSkuadres, int pozicioni){
+    public boolean add(String data, String emriShoferit, String emriSkuadres, int pozicioni){
         this.data = data;
         this.emriShoferit = emriShoferit;
         this.emriSkuadres = emriSkuadres;

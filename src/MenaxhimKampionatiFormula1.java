@@ -1,5 +1,4 @@
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.*;
 
 
@@ -10,7 +9,14 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
     ArrayList<Gara> races = new ArrayList<>();
     public static void main(String[] args) {
 
-        ShfaqMenune();
+        //ShfaqMenune();
+        MenaxhimKampionatiFormula1 m = new MenaxhimKampionatiFormula1();
+        //m.ReadFile();
+        m.addToFile();
+
+
+        //Read object from file
+
 
     }
     static void ShfaqMenune(){
@@ -18,19 +24,61 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
         System.out.println("Zgjidhni nje nga opsionet e meposhtme duke dhene nr. perkates:");
         System.out.println("1-    Shto nje shofer te ri");
         System.out.println("2-    Perditeso shoferin per nje skuader ekzistuese");
-        System.out.println("2-    Fshi shoferin dhe skuadren e tij");
+        System.out.println("3-    Fshi shoferin dhe skuadren e tij");
+        System.out.println("4-    Listo te gjithe shoferat");
     }
-    void addToFile() throws Exception{
-        Gara g = new Gara("04/01/2023", "Luis Hamilton", "Mercedes Benz", 3);
+    public void ReadFile(){
+        try
+        {
+            // Reading the object from a file
+            FileInputStream file = new FileInputStream(file2);
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            Gara g1 = null;
+            // Method for deserialization of object
+            g1 = (Gara)in.readObject();
+            races.add(g1);
+
+            in.close();
+            file.close();
+
+            System.out.println("Object has been deserialized ");
+            System.out.println("a = " + g1.getData());
+            System.out.println("b = " + g1.getEmriShoferit());
+        }
+
+        catch(IOException ex)
+        {
+            System.out.println("IOException is caught");
+        }
+
+        catch(ClassNotFoundException ex)
+        {
+            System.out.println("ClassNotFoundException is caught");
+        }
+        System.out.println("Infos u lexuan me sukses nga file.");
+    }
+
+    public void addToFile(){
+        Gara g = new Gara("05/01/2023", "Hans Hamilton", "Mercedes Benz", 3);
+        races.add(g);
+        g = new Gara("05/01/2023", "Luis Hamilton", "Ford", 2);
         races.add(g);
 
-        new FileOutputStream("myCars.txt", true).close();
-        FileOutputStream fos = new FileOutputStream("myCars.txt");
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        for (Gara race : races) {
-            oos.writeObject(race);
+        try{
+            new FileOutputStream("garat.txt", true).close();
+            FileOutputStream fos = new FileOutputStream("garat.txt");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            for (Gara race : races) {
+                oos.writeObject(race);
+            }
+            fos.close();
         }
-        fos.close();
+        catch (IOException i){
+            i.printStackTrace();
+        }
+
+        System.out.println("Ruajtja e informacionit perfudnoi me sukses.");
     }
 
 }
