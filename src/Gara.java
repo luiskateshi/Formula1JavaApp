@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Gara implements Serializable {
     String data;
@@ -14,13 +15,9 @@ public class Gara implements Serializable {
         this.pozicioni = pozicioni;
     }
 
-    public boolean add(String data, String emriShoferit, String emriSkuadres, int pozicioni){
-        this.data = data;
-        this.emriShoferit = emriShoferit;
-        this.emriSkuadres = emriSkuadres;
-        this.pozicioni = pozicioni;
-
-        return true;
+    public static void addRace(ArrayList<Gara> races, String data, String emriShoferit, String emriSkuadres, int pozicioni){
+        Gara g = new Gara(data, emriShoferit, emriSkuadres, pozicioni);
+        races.add(g);
     }
 
     public String getData() {

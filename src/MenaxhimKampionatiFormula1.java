@@ -1,19 +1,25 @@
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
+
+import static java.lang.Integer.parseInt;
 
 
 public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
     int nrShofereve;
     int nrSkuadrave;
     private static Scanner sc = new Scanner(System.in);
-    ArrayList<Gara> races = new ArrayList<>();
+    //ArrayList<Gara> races = new ArrayList<>();
     public static void main(String[] args) {
 
-        //ShfaqMenune();
+        ShfaqMenune();
         MenaxhimKampionatiFormula1 m = new MenaxhimKampionatiFormula1();
-        //m.ReadFile();
-        m.addToFile();
 
+        ArrayList<Gara> races = new ArrayList<>();
+        m.LoadData(races);
+
+        m.SaveData(races);
 
         //Read object from file
 
@@ -26,72 +32,46 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
         System.out.println("2-    Perditeso shoferin per nje skuader ekzistuese");
         System.out.println("3-    Fshi shoferin dhe skuadren e tij");
         System.out.println("4-    Listo te gjithe shoferat");
+        System.out.println("4-    Save data");
+        System.out.println("4-    Exit");
+
     }
-    public void ReadFile(){
-        try
-        {
-            // Reading the object from a file
-            FileInputStream file = new FileInputStream(file2);
-            ObjectInputStream in = new ObjectInputStream(file);
 
-            Gara g1 = null;
-            // Method for deserialization of object
-            g1 = (Gara)in.readObject();
-            races.add(g1);
-
-            in.close();
-            file.close();
-
-            System.out.println("Object has been deserialized ");
-            System.out.println("a = " + g1.getData());
-            System.out.println("b = " + g1.getEmriShoferit());
+    public void LoadData(ArrayList<Gara> races){
+        try {
+            FileReader fr = new FileReader(file2);
+            BufferedReader input = new BufferedReader(fr);
+            String line;
+            while((line = input.readLine()) != null)
+            {
+                String[] info = null;
+                info = line.split("\\t");
+                Gara.addRace(races, info[0].toString(), info[1].toString(), info[2].toString(), parseInt(info[3]));
+            }
+            input.close();
         }
-
-        catch(IOException ex)
-        {
-            System.out.println("IOException is caught");
-        }
-
-        catch(ClassNotFoundException ex)
-        {
-            System.out.println("ClassNotFoundException is caught");
+        catch (IOException e) {
+            System.out.println("Ndodhi nje gabim");
+            e.printStackTrace();
         }
         System.out.println("Infos u lexuan me sukses nga file.");
     }
+    public void SaveData(ArrayList<Gara> races){
+        try {
+            FileWriter fw = new FileWriter(file2);
+            Writer output = new BufferedWriter(fw);
 
-    public void addToFile(){
-        //Gara g = new Gara("05/01/2023", "Hans Hamilton", "Mercedes Benz", 3);
-        //races.add(g);
-
-        //per te shtuar garat nga memorja ne file
-        try{
-            new FileOutputStream("garat.txt", true).close();
-            FileOutputStream fos = new FileOutputStream("garat.txt");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            for (Gara race : races) {
-                oos.writeObject(race);
+            for(Gara race : races)
+            {
+                output.write(race.getData().toString()+ "\t" +race.getEmriShoferit().toString() + "\t" + race.getEmriSkuadres().toString() + "\t" + race.getPozicioni() +"\n");
             }
-            fos.close();
+            output.close();
         }
-        catch (IOException i){
-            i.printStackTrace();
+        catch (Exception e) {
+            System.out.println("Ndodhi nje gabim");
+            e.printStackTrace();
         }
-
-        //per te shtuar shoferat nga memorja ne file
-        try{
-            new FileOutputStream("garat.txt", true).close();
-            FileOutputStream fos = new FileOutputStream("garat.txt");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            for (Gara race : races) {
-                oos.writeObject(race);
-            }
-            fos.close();
-        }
-        catch (IOException i){
-            i.printStackTrace();
-        }
-
-        System.out.println("Ruajtja e informacionit ne file perfudnoi me sukses.");
+        System.out.println("Infos u ruajten me sukses ne file.");
     }
 
 }
