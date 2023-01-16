@@ -13,13 +13,18 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
     //ArrayList<Gara> races = new ArrayList<>();
     public static void main(String[] args) {
 
-        ShfaqMenune();
-        MenaxhimKampionatiFormula1 m = new MenaxhimKampionatiFormula1();
+//        Test per klasen Formula1Shofer
+        Formula1Shofer.fillArrayList();
+        Formula1Shofer.ShfaqStatistikaTeGjitheShoferet();
+//    Formula1Shofer.ShfaqStatistikaShoferi("seb");
 
-        ArrayList<Gara> races = new ArrayList<>();
-        m.LoadData(races);
-
-        m.SaveData(races);
+//        ShfaqMenune();
+//        MenaxhimKampionatiFormula1 m = new MenaxhimKampionatiFormula1();
+//
+//        ArrayList<Gara> races = new ArrayList<>();
+//        m.LoadData(races);
+//
+//        m.SaveData(races);
 
         //Read object from file
 
