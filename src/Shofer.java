@@ -22,7 +22,7 @@ public class Shofer implements Serializable {
 
     public static void removeShofer( String emri) {
 
-        Shofer.removeShofer(emri);
+    //    Shofer.remove(emri);
     }
 
 
