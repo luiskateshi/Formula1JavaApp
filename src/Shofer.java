@@ -1,25 +1,31 @@
-public class Shofer {
-    private String emri;
-    private String mbiemri;
-    private String emriSkuadres;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Scanner;
 
-    public Shofer (String emri, String mbiemri, String emriSkuadres){
-        setEmri(emri);
-        setMbiemri(mbiemri);
-        setEmriSkuadres(emriSkuadres);
+public class Shofer implements Serializable {
+    String emri;
+    String mbiemri;
+    String emriSkuadres;
+
+
+    Shofer (){};
+    Shofer (String emri, String mbiemri, String emriSkuadres){
+        this.emri = emri;
+        this.mbiemri = mbiemri;
+        this.emriSkuadres = emriSkuadres;
     };
 
-    public void setEmri(String emri) {
-        this.emri = emri;
+    public static void addShofer(ArrayList<Shofer> shoferet, String emri, String mbiemri, String emriSkuadres){
+        Shofer s = new Shofer( emri, mbiemri, emriSkuadres);
+        shoferet.add(s);
     }
 
-    public void setMbiemri(String mbiemri) {
-        this.mbiemri = mbiemri;
+    public static void removeShofer( String emri) {
+
+        Shofer.removeShofer(emri);
     }
 
-    public void setEmriSkuadres(String emriSkuadres) {
-        this.emriSkuadres = emriSkuadres;
-    }
+
 
     public String getEmri(){
         return emri;
