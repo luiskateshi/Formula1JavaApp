@@ -1,45 +1,50 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Shofer implements Serializable {
-    String emri;
-    String mbiemri;
-    String emriSkuadres;
+    private String emri;
+    private String mbiemri;
+    private String emriSkuadres;
 
-
-    Shofer (){};
-    Shofer (String emri, String mbiemri, String emriSkuadres){
-        this.emri = emri;
-        this.mbiemri = mbiemri;
-        this.emriSkuadres = emriSkuadres;
+    public Shofer (String emri, String mbiemri, String emriSkuadres){
+        setEmri(emri);
+        setMbiemri(mbiemri);
+        setEmriSkuadres(emriSkuadres);
     };
 
-    public static void addShofer(String emri, String mbiemri, String emriSkuadres){
-        Shofer s = new Shofer( emri, mbiemri, emriSkuadres);
-        shoferet.add(s);
+
+    public static void remove(int a){     //fshirja e nje skuadre
+        Formula1Shofer.remove(a);
     }
 
-    public static void removeShofer( String e) {
+    public static void rename (ArrayList<String> drivers, String skuadra){   //duke marr emrin e skuadres bejm ndrimin e shoferit
 
-        shoferet.remove(e);
+        int a = drivers.size();
+        Scanner in=new Scanner(System.in);
+        for(int i=0;i<=a;i++) {
+            if (drivers.get(2).equals(skuadra)) {
+                System.out.println("Vendos emrin e ri");
+                String emri = in.next();
+                drivers.set(0, emri);
+                System.out.println("Vendos mbiemri e ri");
+                String mbiemri = in.next();
+                drivers.set(1, mbiemri);
+            }
+        }
     }
 
-    public static void renameShofer( String e) {
-        Scanner input = new Scanner(System.in);
-        removeShofer(e);
-
-        System.out.println("emrin e ri: ");
-        String emri = input.next();
-        System.out.println("mbiemri e ri: ");
-        String mbiemri = input.next();
-        System.out.println("emrin skuadres e ri: ");
-        String emriSkuadres = input.next();
-
-        addShofer(emri,mbiemri,emriSkuadres);
-
+    public void setEmri(String emri) {
+        this.emri = emri;
     }
 
+    public void setMbiemri(String mbiemri) {
+        this.mbiemri = mbiemri;
+    }
 
+    public void setEmriSkuadres(String emriSkuadres) {
+        this.emriSkuadres = emriSkuadres;
+    }
 
     public String getEmri(){
         return emri;
