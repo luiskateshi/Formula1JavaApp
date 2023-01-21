@@ -16,12 +16,12 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
 
         MenaxhimKampionatiFormula1 m = new MenaxhimKampionatiFormula1();
         m.LoadData();
-
+        m.LoadDataShofer();
         ShfaqMenune();
 
 
         m.SaveData();
-
+        m.SaveDataShofer();
         int nrShofereve;
         int nrSkuadrave;
 
@@ -94,6 +94,49 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
             for(Gara race : races)
             {
                 output.write(race.getData().toString()+ "\t" +race.getEmriShoferit().toString() + "\t" + race.getEmriSkuadres().toString() + "\t" + race.getPozicioni() +"\n");
+            }
+            output.close();
+        }
+        catch (Exception e) {
+            System.out.println("Ndodhi nje gabim");
+            e.printStackTrace();
+        }
+        System.out.println("Infos u ruajten me sukses ne file.");
+    }
+
+    public void LoadDataShofer(){
+
+        //Leximi i File-it "garat.txt" dhe vendosja e informacionit ne objekt-vektorin ArrayList<Gara> races
+        try {
+            FileReader fr = new FileReader(file1);
+            BufferedReader input = new BufferedReader(fr);
+            String line;
+            while((line = input.readLine()) != null)
+            {
+                String[] info = null;
+                info = line.split("\\t");
+                drivers.add(new Formula1Shofer(info[0].toString(), info[1].toString(), info[2].toString(),parseInt(info[3]),parseInt(info[4]),parseInt(info[5]),parseInt(info[6]),parseInt(info[7]),info[8].toString()));
+            }
+            input.close();
+        }
+        catch (IOException e) {
+            System.out.println("Ndodhi nje gabim");
+            e.printStackTrace();
+        }
+        System.out.println("Infos u lexuan me sukses nga file.");
+
+    }
+    public void SaveDataShofer(){
+
+        //Vendosja e cdo informacioni te futur nga user-i deri ne kete moment nga objekt-vektori ArrayList<Gara> races ne file-in "garat.txt"
+        try {
+
+            FileWriter fw = new FileWriter(file2);
+            Writer output = new BufferedWriter(fw);
+
+            for(Formula1Shofer drivers : drivers)
+            {
+                output.write(drivers.getEmri().toString()+ "\t" +drivers.getMbiemri().toString() + "\t" + drivers.getEmriSkuadres().toString() + "\t" + drivers.getNrVendeTePara() +"\t"+ drivers.getNrVendeTeDyta() +"\t"+ drivers.getNrVendeTeTreta() +"\t"+ drivers.getActualPoints() +"\t"+ drivers.getNrGarave() +"\t"+ drivers.getVendndodhja().toString());
             }
             output.close();
         }
