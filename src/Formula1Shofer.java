@@ -18,7 +18,7 @@ public class Formula1Shofer extends Shofer {
         this.nrVendeTePara = nrVendeTePara;
         this.nrVendeTeDyta = nrVendeTeDyta;
         this.nrVendeTeTreta = nrVendeTeTreta;
-        ActualPoints = actualPoints;
+        this.ActualPoints = actualPoints;
         this.nrGarave = nrGarave;
         this.vendndodhja = vendndodhja;
     }
@@ -48,6 +48,16 @@ public class Formula1Shofer extends Shofer {
 
     public int getNrVendeTePara(){
         return nrVendeTePara;
+    }
+
+    public int getNrVendeTeDyta(){ return nrVendeTeDyta; }
+
+    public int getNrVendeTeTreta() { return nrVendeTeTreta; }
+
+    public int getNrGarave() { return nrGarave; }
+
+    public String getVendndodhja() {
+        return vendndodhja;
     }
 
     @Override
