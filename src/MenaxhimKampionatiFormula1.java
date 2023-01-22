@@ -136,7 +136,7 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
 
             for(Formula1Shofer drivers : drivers)
             {
-                output.write(drivers.getEmri().toString()+ "\t" +drivers.getMbiemri().toString() + "\t" + drivers.getEmriSkuadres().toString() + "\t" + drivers.getNrVendeTePara() +"\t"+ drivers.getNrVendeTeDyta() +"\t"+ drivers.getNrVendeTeTreta() +"\t"+ drivers.getActualPoints() +"\t"+ drivers.getNrGarave() +"\t"+ drivers.getVendndodhja().toString());
+                output.write(drivers.getEmri().toString()+ "\t" +drivers.getMbiemri().toString() + "\t" + drivers.getEmriSkuadres().toString() + "\t" + drivers.getNrVendeTePara() +"\t"+ drivers.getNrVendeTeDyta() +"\t"+ drivers.getNrVendeTeTreta() +"\t"+ drivers.getActualPoints() +"\t"+ drivers.getNrGarave() +"\t"+ drivers.getVendndodhja().toString()+"\n");
             }
             output.close();
         }
