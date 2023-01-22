@@ -18,18 +18,21 @@ public class Shofer implements Serializable {
         Formula1Shofer.remove(a);
     }
 
-    public static void rename (ArrayList<String> drivers, String skuadra){   //duke marr emrin e skuadres bejm ndrimin e shoferit
+    public static void rename (ArrayList<Formula1Shofer> drivers, String skuadra){   //duke marr emrin e skuadres bejm ndrimin e shoferit
 
         int a = drivers.size();
         Scanner in=new Scanner(System.in);
         for(int i=0;i<=a;i++) {
-            if (drivers.get(2).equals(skuadra)) {
+            Formula1Shofer temp = drivers.get(i);
+            if (drivers.get(i).getEmriSkuadres().equalsIgnoreCase(skuadra)) {
                 System.out.println("Vendos emrin e ri");
                 String emri = in.next();
-                drivers.set(0, emri);
+                temp.setEmri(emri);
                 System.out.println("Vendos mbiemri e ri");
                 String mbiemri = in.next();
-                drivers.set(1, mbiemri);
+                temp.setMbiemri(mbiemri);
+                drivers.set(i, temp);
+                return;
             }
         }
     }
