@@ -14,14 +14,24 @@ public class Shofer implements Serializable {
     };
 
 
-    public static void remove(int a){     //fshirja e nje skuadre
-        Formula1Shofer.remove(a);
+    public static void remove(ArrayList<Formula1Shofer> drivers){     //fshirja e nje skuadre
+        Scanner in=new Scanner(System.in);
+        System.out.println("Zgjidh shoferin qe deshironi te fshini sipas numrit ne te majte: ");
+        int i = 0;
+        for (Formula1Shofer x : drivers) {
+            System.out.println(i + " - " + x.getEmri().toString() + " " + x.getMbiemri().toString() + " " + x.getEmriSkuadres().toString());
+            i++;
+        }
+        int a = in.nextInt();
+        drivers.remove(a);
     }
 
-    public static void rename (ArrayList<Formula1Shofer> drivers, String skuadra){   //duke marr emrin e skuadres bejm ndrimin e shoferit
 
-        int a = drivers.size();
+    public static void rename (ArrayList<Formula1Shofer> drivers){   //duke marr emrin e skuadres bejm ndrimin e shoferit
         Scanner in=new Scanner(System.in);
+        System.out.println("Vendos emrin e skuadres");
+        String skuadra = in.next();
+        int a = drivers.size();
         for(int i=0;i<=a;i++) {
             Formula1Shofer temp = drivers.get(i);
             if (drivers.get(i).getEmriSkuadres().equalsIgnoreCase(skuadra)) {

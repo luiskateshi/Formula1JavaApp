@@ -17,21 +17,15 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
         MenaxhimKampionatiFormula1 m = new MenaxhimKampionatiFormula1();
         m.LoadData();
         m.LoadDataShofer();
-        ShfaqMenune();
 
-
-        m.SaveData();
-        m.SaveDataShofer();
-        int nrShofereve;
-        int nrSkuadrave;
-
-        Scanner sc = new Scanner(System.in);
-        ArrayList<Gara> races = new ArrayList<>();
-//        Test per klasen Formula1Shofer
-            Formula1Shofer.fillArrayList();
-            Formula1Shofer.ShfaqStatistikaTeGjitheShoferet();
-
+        while (true) {
+            ShfaqMenune();
+            char komanda = sc.next().charAt(0);
+            m.doMenu(komanda);
         }
+
+
+    }
 
     static void ShfaqMenune(){
 
@@ -48,12 +42,33 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
         System.out.println("7-    Shfaq ");
     }
     void doMenu(char komanda){
+
         switch (komanda) {
             case '1':
-                //therritja e funksionit perkates
+                Formula1Shofer.addDriverToArrayList(drivers);
+                break;
+            case '2':
+                Shofer.rename(drivers);
+                break;
+            case '3':
+                Shofer.remove(drivers);
+                break;
+            case '4':
+                Formula1Shofer.ShfaqStatistikaShoferi(drivers);
+                break;
+            case '5':
+                Formula1Shofer.ShfaqStatistikaTeGjitheShoferet(drivers);
                 break;
             case '6':
                 Gara.addRace(races, drivers);
+                break;
+            case 's':
+                SaveData();
+                SaveDataShofer();
+                break;
+            case 'x':
+                System.out.println("Ju keni perfunduar punen me programin!");
+                System.exit(0);
                 break;
             default:
                 System.out.println("Funksioni i kerkuar nuk ekziston, provoni perseri!");
@@ -75,6 +90,7 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
                 races.add(new Gara(info[0].toString(), info[1].toString(), info[2].toString(), parseInt(info[3])));
             }
             input.close();
+            fr.close();
         }
         catch (IOException e) {
             System.out.println("Ndodhi nje gabim");
@@ -96,6 +112,7 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
                 output.write(race.getData().toString()+ "\t" +race.getEmriShoferit().toString() + "\t" + race.getEmriSkuadres().toString() + "\t" + race.getPozicioni() +"\n");
             }
             output.close();
+            fw.close();
         }
         catch (Exception e) {
             System.out.println("Ndodhi nje gabim");
@@ -108,8 +125,8 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
 
         //Leximi i File-it "garat.txt" dhe vendosja e informacionit ne objekt-vektorin ArrayList<Gara> races
         try {
-            FileReader fr = new FileReader(file1);
-            BufferedReader input = new BufferedReader(fr);
+            FileReader fr1 = new FileReader(file1);
+            BufferedReader input = new BufferedReader(fr1);
             String line;
             while((line = input.readLine()) != null)
             {
@@ -118,6 +135,7 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
                 drivers.add(new Formula1Shofer(info[0].toString(), info[1].toString(), info[2].toString(),parseInt(info[3]),parseInt(info[4]),parseInt(info[5]),parseInt(info[6]),parseInt(info[7]),info[8].toString()));
             }
             input.close();
+            fr1.close();
         }
         catch (IOException e) {
             System.out.println("Ndodhi nje gabim");
@@ -131,14 +149,15 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
         //Vendosja e cdo informacioni te futur nga user-i deri ne kete moment nga objekt-vektori ArrayList<Gara> races ne file-in "garat.txt"
         try {
 
-            FileWriter fw = new FileWriter(file2);
-            Writer output = new BufferedWriter(fw);
+            FileWriter fw1 = new FileWriter(file1);
+            Writer output = new BufferedWriter(fw1);
 
             for(Formula1Shofer drivers : drivers)
             {
-                output.write(drivers.getEmri().toString()+ "\t" +drivers.getMbiemri().toString() + "\t" + drivers.getEmriSkuadres().toString() + "\t" + drivers.getNrVendeTePara() +"\t"+ drivers.getNrVendeTeDyta() +"\t"+ drivers.getNrVendeTeTreta() +"\t"+ drivers.getActualPoints() +"\t"+ drivers.getNrGarave() +"\t"+ drivers.getVendndodhja().toString()+"\n");
+                output.write(drivers.getEmri().toString()+ "\t" +drivers.getMbiemri().toString() + "\t" + drivers.getEmriSkuadres().toString() + "\t" + drivers.getNrVendeTePara() +"\t"+ drivers.getNrVendeTeDyta() +"\t"+ drivers.getNrVendeTeTreta() +"\t"+ drivers.getActualPoints() +"\t"+ drivers.getNrGarave() +"\t"+ drivers.getVendndodhja().toString() +"\n");
             }
             output.close();
+            fw1.close();
         }
         catch (Exception e) {
             System.out.println("Ndodhi nje gabim");

@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,7 +10,17 @@ public class Formula1Shofer extends Shofer {
     private int ActualPoints;
     private int nrGarave;
     private String vendndodhja;
-    private static ArrayList<Formula1Shofer> shoferi = new ArrayList<>();
+
+    public Formula1Shofer(String emri, String mbiemri, String emriSkuadres) {
+        super(emri, mbiemri, emriSkuadres);
+        this.nrVendeTePara = 0;
+        this.nrVendeTeDyta = 0;
+        this.nrVendeTeTreta = 0;
+        this.ActualPoints = 0;
+        this.nrGarave = 0;
+        this.vendndodhja = " ";
+    }
+
 
     public Formula1Shofer(String emri, String mbiemri, String emriSkuadres, int nrVendeTePara, int nrVendeTeDyta, int nrVendeTeTreta, int actualPoints, int nrGarave, String vendndodhja) {
         super(emri, mbiemri, emriSkuadres);
@@ -23,20 +32,36 @@ public class Formula1Shofer extends Shofer {
         this.vendndodhja = vendndodhja;
     }
 
-    public static void fillArrayList(){
-        shoferi.add(new Formula1Shofer("luis", "hamilton", "Mercedes", 5, 2, 4, 25, 3, "UK"));
-        shoferi.add(new Formula1Shofer("seb", "vetel", "ferrari", 7, 2, 4, 30, 3, "Germany"));
-        shoferi.add(new Formula1Shofer("valteri", "botas", "honda", 4, 2, 4, 25, 3, "Finland"));
-    }
+    public static void addDriverToArrayList(ArrayList<Formula1Shofer> drivers){
+        String emri;
+        String mbiemri;
+        String emriSkuadres;
+        Scanner in = new Scanner(System.in);
+        System.out.println("Vendos emrin e shoferit");
+        emri = in.next();
+        System.out.println("Vendos mbiemrin e shoferit");
+        mbiemri = in.next();
+        System.out.println("Vendos emrin e skuadres");
+        emriSkuadres = in.next();
 
-    public static void ShfaqStatistikaShoferi(String emriShoferi){
-        for (Formula1Shofer z : shoferi){
-            if (z.getEmri().equals(emriShoferi))
-                System.out.println(z);
+        var shoferi = new Formula1Shofer(emri, mbiemri, emriSkuadres);
+        drivers.add(shoferi);
+       }
+
+    public static void ShfaqStatistikaShoferi(ArrayList<Formula1Shofer> drivers){
+        Scanner in=new Scanner(System.in);
+        System.out.println("Zgjidh shoferin per te cilin deshironi te shfaqni statistikat sipas numrit ne te majte: ");
+        int i = 0;
+        for (Formula1Shofer x : drivers) {
+            System.out.println(i + " - " + x.getEmri().toString() + " " + x.getMbiemri().toString() + " " + x.getEmriSkuadres().toString());
+            i++;
         }
+        int zgjedhja = in.nextInt();
+        Formula1Shofer z = drivers.get(zgjedhja);
+        System.out.println(z);
     }
 
-    public static void ShfaqStatistikaTeGjitheShoferet(){
+    public static void ShfaqStatistikaTeGjitheShoferet(ArrayList<Formula1Shofer> shoferi){
         Collections.sort(shoferi, new Formula1ShoferComparator());
         for (Formula1Shofer z : shoferi)
             System.out.println(z);

@@ -1,0 +1,3 @@
+stivi	bosi	benc	1	0	0	25	1	 
+herta	cota	fiat	0	1	0	18	1	 
+flor	bana	moto	0	0	1	15	1	 

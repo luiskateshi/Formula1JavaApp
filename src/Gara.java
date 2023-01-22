@@ -66,9 +66,12 @@ public class Gara implements Serializable {
             System.out.println("Shkruani te dhenat per pjesmarresin nr.  "+i+": ");
             System.out.println("Zgjidhni shoferin duke dhene numrin perkates: ");
 
+            int count = 0;
             for (Formula1Shofer x : drivers) {
-                System.out.println(i + " - " + x.getEmri().toString());
+                System.out.println(count + " - " + x.getEmri().toString());
+                count++;
             }
+
 
             id = a.nextInt();
             String emriShoferit = drivers.get(id).getEmri();
