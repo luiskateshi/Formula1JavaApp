@@ -1,8 +1,6 @@
 import java.util.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
+//hello world
 public class Formula1Shofer extends Shofer {
     private int nrVendeTePara;
     private int nrVendeTeDyta;
@@ -22,7 +20,9 @@ public class Formula1Shofer extends Shofer {
     }
 
 
-    public Formula1Shofer(String emri, String mbiemri, String emriSkuadres, int nrVendeTePara, int nrVendeTeDyta, int nrVendeTeTreta, int actualPoints, int nrGarave, String vendndodhja) {
+    public Formula1Shofer(String emri, String mbiemri, String emriSkuadres,
+                          int nrVendeTePara, int nrVendeTeDyta, int nrVendeTeTreta,
+                          int actualPoints, int nrGarave, String vendndodhja) {
         super(emri, mbiemri, emriSkuadres);
         this.nrVendeTePara = nrVendeTePara;
         this.nrVendeTeDyta = nrVendeTeDyta;
@@ -61,8 +61,20 @@ public class Formula1Shofer extends Shofer {
         System.out.println(z);
     }
 
-    public static void ShfaqStatistikaTeGjitheShoferet(ArrayList<Formula1Shofer> shoferi){
-        Collections.sort(shoferi, new Formula1ShoferComparator());
+    public static void ShfaqStatistikaTeGjitheShoferetActualPointsDSC(ArrayList<Formula1Shofer> shoferi){
+        Collections.sort(shoferi, new Formula1ShoferComparatorByActualPoints());
+        for (Formula1Shofer z : shoferi)
+            System.out.println(z);
+    }
+
+    public static void ShfaqStatistikaTeGjitheShoferetActualPointsASC(ArrayList<Formula1Shofer> shoferi){
+        Collections.sort(shoferi, Collections.reverseOrder(new Formula1ShoferComparatorByActualPoints()));
+        for (Formula1Shofer z : shoferi)
+            System.out.println(z);
+    }
+
+    public static void ShfaqStatistikaTeGjitheShoferetNrVendeTeParaDESC(ArrayList<Formula1Shofer> shoferi){
+        Collections.sort(shoferi, new Formula1ShoferComparatorByNrVendeTePara());
         for (Formula1Shofer z : shoferi)
             System.out.println(z);
     }
@@ -92,4 +104,6 @@ public class Formula1Shofer extends Shofer {
                 + "\t" + "Nr. No3: " +  nrVendeTeTreta + "\t" + "Vendndodhja: " + vendndodhja;
     }
 }
+
+
 

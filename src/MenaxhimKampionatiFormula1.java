@@ -1,6 +1,4 @@
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 
 import static java.lang.Integer.parseInt;
@@ -36,10 +34,12 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
         System.out.println("4-    Shfaq Statistikat per nje shofer");
         System.out.println("5-    Shfaq Statistikat per shoferet (Actual points DESC)");
         System.out.println("6-    Shto nje gare te re");
+        System.out.println("7-    Shfaq Statistikat per shoferet (Actual points ASC)");
+        System.out.println("8-    Shfaq Statistikat per shoferet (Nr of wins DESC)");
         System.out.println("s-    Save data");
         System.out.println("x-    Exit");
-        System.out.println("\nFunksionalitetet me nderfaqe grafike (GUI):");
-        System.out.println("7-    Shfaq ");
+//        System.out.println("\nFunksionalitetet me nderfaqe grafike (GUI):");
+//        System.out.println("7-    Shfaq ");
     }
     void doMenu(char komanda){
 
@@ -57,11 +57,17 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
                 Formula1Shofer.ShfaqStatistikaShoferi(drivers);
                 break;
             case '5':
-                Formula1Shofer.ShfaqStatistikaTeGjitheShoferet(drivers);
+                Formula1Shofer.ShfaqStatistikaTeGjitheShoferetActualPointsDSC(drivers);
                 break;
             case '6':
                 Gara.addRace(races, drivers);
                 break;
+            case '7':
+                Formula1Shofer.ShfaqStatistikaTeGjitheShoferetActualPointsASC(drivers);
+                break;
+            case '8':
+            Formula1Shofer.ShfaqStatistikaTeGjitheShoferetNrVendeTeParaDESC(drivers);
+            break;
             case 's':
                 SaveData();
                 SaveDataShofer();
@@ -103,7 +109,6 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
 
         //Vendosja e cdo informacioni te futur nga user-i deri ne kete moment nga objekt-vektori ArrayList<Gara> races ne file-in "garat.txt"
         try {
-
             FileWriter fw = new FileWriter(file2);
             Writer output = new BufferedWriter(fw);
 
