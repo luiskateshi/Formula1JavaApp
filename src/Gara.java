@@ -1,5 +1,10 @@
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 import static java.lang.System.in;
@@ -89,6 +94,24 @@ public class Gara implements Serializable {
 
     }
 
+    //Kjo eshte nje metode qe mund te perdoret per te renditur garat sipas datave
+
+   public static void Renditje(ArrayList<Gara> gara) {
+       Collections.sort(gara, new RenditjaGaraCompare());
+       for (Gara a : gara)
+            System.out.println(a);
+
+
+    }
+   @Override
+    public String toString(){
+        return "Data: " + getData() + "\tEmri: " + getEmriShoferit() + "\tSkuadra: " +
+                getEmriSkuadres() + "\tPozicioni: " + getPozicioni();
+    }
+
+
+
+
     public static void updateDriversFromRace(int idShoferi, ArrayList<Formula1Shofer> drivers, int pozicioni){
 
         Formula1Shofer a = drivers.get(idShoferi);
@@ -128,6 +151,7 @@ public class Gara implements Serializable {
 
         drivers.set(idShoferi, driver);
     }
+
 
 
     public String getData() {
