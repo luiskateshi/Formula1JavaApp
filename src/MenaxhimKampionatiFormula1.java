@@ -65,6 +65,7 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
                 Gara.addRace(races, drivers);
                 break;
             /*case '8':
+                Gara.shfaqGarat(races);
                 Gara.Renditje(races);
                 break;*/
             case 's':

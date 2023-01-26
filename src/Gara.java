@@ -1,10 +1,6 @@
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Scanner;
 
 import static java.lang.System.in;
@@ -102,6 +98,17 @@ public class Gara implements Serializable {
             System.out.println(a);
 
 
+    }
+
+    public static void shfaqGarat(ArrayList<Gara> gara) {
+        Scanner in=new Scanner(System.in);
+        System.out.println("Vendos emrin e shoferit");
+        String emri = in.next();
+        for (Gara a : gara) {
+            if (a.getEmriShoferit().equalsIgnoreCase(emri)) {
+                System.out.println(a);
+            }
+        }
     }
    @Override
     public String toString(){
