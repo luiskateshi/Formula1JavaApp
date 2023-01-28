@@ -16,6 +16,7 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
     ArrayList<Formula1Shofer> drivers = new ArrayList<>();
     public static void main(String[] args) {
 
+
         MenaxhimKampionatiFormula1 m = new MenaxhimKampionatiFormula1();
         m.LoadData();
         m.LoadDataShofer();
@@ -42,6 +43,7 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
         System.out.println("x-    Exit");
         System.out.println("\nFunksionalitetet me nderfaqe grafike (GUI):");
         System.out.println("7-    Shfaq ");
+        System.out.println("8-    Gjenero gare te rastesishme");
     }
     void doMenu(char komanda){
 
@@ -76,6 +78,17 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
                 System.out.println("Ju keni perfunduar punen me programin!");
                 System.exit(0);
                 break;
+
+            case '8':
+                ArrayList<Gara> g = new ArrayList<>();
+                g = Gara.generateRandomRace(races, drivers);
+                System.out.println(g);
+                break;
+            case   '9':
+                ArrayList<Gara> g1 = new ArrayList<>();
+                g1 = Gara.generateRandomRaceProbability(races, drivers);
+                System.out.println(g1);
+                break;
             default:
                 System.out.println("Funksioni i kerkuar nuk ekziston, provoni perseri!");
         }
@@ -93,7 +106,7 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
             {
                 String[] info = null;
                 info = line.split("\\t");
-                races.add(new Gara(info[0].toString(), info[1].toString(), info[2].toString(), parseInt(info[3])));
+                races.add(new Gara(info[0].toString(), info[1].toString(), info[2].toString(), info[3].toString(),parseInt(info[4])));
             }
             input.close();
             fr.close();
@@ -115,7 +128,7 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
 
             for(Gara race : races)
             {
-                output.write(race.getData().toString()+ "\t" +race.getEmriShoferit().toString() + "\t" + race.getEmriSkuadres().toString() + "\t" + race.getPozicioni() +"\n");
+                output.write(race.getData().toString()+ "\t"+ race.getVendndodhja().toString()+ "\t" +race.getEmriShoferit().toString() + "\t" + race.getEmriSkuadres().toString() + "\t" + race.getPozicioni() +"\n");
             }
             output.close();
             fw.close();
