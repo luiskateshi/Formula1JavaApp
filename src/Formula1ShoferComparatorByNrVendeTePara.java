@@ -1,12 +1,11 @@
 import java.util.Comparator;
 
-public class Formula1ShoferComparator implements Comparator<Formula1Shofer> {
-
+public class Formula1ShoferComparatorByNrVendeTePara implements Comparator<Formula1Shofer> {
     @Override
     public int compare(Formula1Shofer o1, Formula1Shofer o2) {
-        if (o1.getActualPoints() > o2.getActualPoints())
+        if (o1.getNrVendeTePara() > o2.getNrVendeTePara())
             return -1;
-        else if (o1.getActualPoints() == o2.getActualPoints()){
+        else if (o1.getNrVendeTePara() == o2.getNrVendeTePara()){
             if (o1.getNrVendeTePara() > o2.getNrVendeTePara())
                 return -1;
             else if (o1.getNrVendeTePara() == o2.getNrVendeTePara())
@@ -17,6 +16,5 @@ public class Formula1ShoferComparator implements Comparator<Formula1Shofer> {
         else
             return 1;
     }
-
-
 }
+
