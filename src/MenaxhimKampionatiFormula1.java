@@ -1,3 +1,5 @@
+import javax.swing.*;
+import java.awt.event.ActionEvent;
 import java.io.*;
 import java.util.*;
 
@@ -70,8 +72,12 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
                 Formula1Shofer.ShfaqStatistikaTeGjitheShoferetActualPointsASC(drivers);
                 break;
             case '8':
-            Formula1Shofer.ShfaqStatistikaTeGjitheShoferetNrVendeTeParaDESC(drivers);
-            break;
+                Formula1Shofer.ShfaqStatistikaTeGjitheShoferetNrVendeTeParaDESC(drivers);
+                break;
+            /*case '8':
+                Gara.shfaqGarat(races);
+                Gara.Renditje(races);
+                break;*/
             case 's':
                 SaveData();
                 SaveDataShofer();

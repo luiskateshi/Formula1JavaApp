@@ -75,6 +75,9 @@ public class Formula1Shofer extends Shofer {
 
     public static void ShfaqStatistikaTeGjitheShoferetNrVendeTeParaDESC(ArrayList<Formula1Shofer> shoferi){
         Collections.sort(shoferi, new Formula1ShoferComparatorByNrVendeTePara());
+    public static void ShfaqStatistikaTeGjitheShoferet(ArrayList<Formula1Shofer> shoferi){
+
+
         for (Formula1Shofer z : shoferi)
             System.out.println(z);
     }
