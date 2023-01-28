@@ -1,22 +1,31 @@
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Random;
 import java.util.Scanner;
 
 import static java.lang.System.in;
 
 public class Gara implements Serializable {
     String data;
+
+    String vendndodhja;
     String emriShoferit;
     String emriSkuadres;
     int pozicioni;
 
     Gara() {}; //konstruktori default
-    Gara(String data, String emriShoferit, String emriSkuadres, int pozicioni){
+    Gara(String data, String vendndodhja, String emriShoferit, String emriSkuadres, int pozicioni){
+        this.vendndodhja = vendndodhja;
         this.data = data;
         this.emriShoferit = emriShoferit;
         this.emriSkuadres = emriSkuadres;
         this.pozicioni = pozicioni;
     }
+
 
     static int FindPointsFromPosition(int pozicioni)
     {
@@ -49,6 +58,7 @@ public class Gara implements Serializable {
     public static void addRace(ArrayList<Gara> races, ArrayList<Formula1Shofer> drivers){
 
         String data;
+        String vendndodhja;
         int id;
         int pozicioni = 0;
 
@@ -58,6 +68,8 @@ public class Gara implements Serializable {
 
         System.out.println("Data ne formatin dd/mm/yyyy: ");
         data = a.next();
+        System.out.println("Vendndodhja: ");
+        vendndodhja = a.next();
 
         System.out.println("Nr. i pjesmarresve ne gare: ");
         int nr = a.nextInt();
@@ -81,13 +93,182 @@ public class Gara implements Serializable {
             pozicioni = a.nextInt();
 
             updateDriversFromRace(id, drivers, pozicioni);
-            races.add(new Gara(data, emriShoferit, emriSkuadres, pozicioni));
+            races.add(new Gara(data, vendndodhja, emriShoferit, emriSkuadres, pozicioni));
 
 
         }
 
 
     }
+
+    public static int createRandomIntBetween(int start, int end) {
+        return start + (int) Math.round(Math.random() * (end - start));
+    }
+    public static ArrayList<Gara> generateRandomRace(ArrayList<Gara> races, ArrayList<Formula1Shofer> drivers) {
+        ArrayList<Gara> tempGara = new ArrayList<Gara>();
+        int nrPjesmarresve = drivers.size();
+        int nrGarave = races.size();
+
+        String data = generateRadnomDate();
+
+        String Vendodhja = generateRandomCity();
+
+        int positions[] = generateRandomPositions(nrPjesmarresve);
+        int i = 0;
+        for (Formula1Shofer x : drivers) {
+            tempGara.add(new Gara(data.toString(), Vendodhja, x.getEmri(), x.getEmriSkuadres(), positions[i]));
+            i++;
+        }
+        return tempGara;
+    }
+    public static int[] generateRandomPositions(int nrPjesmarresve) {
+        int positions[] = new int[nrPjesmarresve];
+        for (int i = 0; i < nrPjesmarresve; i++) {
+            while(true)
+            {
+                int position = createRandomIntBetween(1, nrPjesmarresve);
+                if(checkIfPositionExists(positions, position))
+                    continue;
+                else
+                {
+                    positions[i] = position;
+                    break;
+                }
+            }
+        }
+        return positions;
+    }
+
+    public static String generateRandomCity()
+    {
+        String qyteti[] = {"Tirana", "Durrësi", "Shkodra", "Elbasani", "Vlora", "Korça", "Fieri", "Berati", "Pogradeci"};
+        Random rand = new Random();
+        String Vendodhja = qyteti[rand.nextInt(qyteti.length)];
+        return Vendodhja;
+    }
+    public static String generateRadnomDate()
+    {
+        Random rand = new Random();
+        int dita = rand.nextInt(30) + 1;
+        int muaji = rand.nextInt(12) + 1;
+        int viti = rand.nextInt(20) + 2000;
+        String data = dita + "/" + muaji + "/" + viti;
+        return data;
+    }
+
+
+    public static ArrayList<Gara> generateRandomRaceProbability (ArrayList<Gara> races, ArrayList<Formula1Shofer> drivers)
+    {
+        ArrayList<Gara> tempGara = new ArrayList<Gara>();
+        int nrPjesmarresve = drivers.size();
+        int nrGarave = races.size();
+        String data = generateRadnomDate();
+        String Vendodhja = generateRandomCity();
+        int StartPositions[] = generateRandomPositions(nrPjesmarresve);
+        int FinishPositions[] = generateFinishPositionsWithProbability(fillProbabilityArray(), nrPjesmarresve);
+
+        int i = 0;
+        for (Formula1Shofer x : drivers) {
+            tempGara.add(new Gara(data.toString(), Vendodhja, x.getEmri(), x.getEmriSkuadres(), FinishPositions[StartPositions[i]-1]));
+            i++;
+        }
+
+        return tempGara;
+    }
+    public static int[] fillProbabilityArray()
+    {
+        int probability[] = new int[100];
+        int nr = 5;
+        for(int i = 0; i < 100; i++)
+        {
+            if(i >= 0 && i <= 39)
+            {
+                probability[i] = 1;
+            }
+            else if(i >= 40 && i <= 69)
+            {
+                probability[i] = 2;
+            }
+            else if(i >= 70 && i <= 79)
+            {
+                probability[i] = 3;
+            }
+            else if(i >= 80 && i <= 89)
+            {
+                probability[i] = 4;
+            }
+            else
+            {
+                probability[i] = nr;
+                if(i%2!=0)
+                nr++;
+            }
+        }
+        return probability;
+    }
+    public static int[] generateFinishPositionsWithProbability(int[] probability, int nrPjesmarresve)
+    {
+        int positions[] = new int[nrPjesmarresve];
+
+        try {
+            for(int i = 0; i < nrPjesmarresve; i++)
+            {
+                if(i<=8)
+                {
+                    while(true)
+                    {
+                        int pos = probability[createRandomIntBetween(0, 99)];    //nga tabela pozicioneve te shperndara me probabilitet marrim nje pozicion random
+                        if(checkIfPositionExists(positions, pos))
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            positions[i] = pos;
+                            break;
+                        }
+                    }
+                }
+                else if(i>8)
+                {
+                    positions[i] = createRandomIntBetween(10, nrPjesmarresve);
+                    while(true)
+                    {
+                        int position = createRandomIntBetween(10, nrPjesmarresve);
+                        if(checkIfPositionExists(positions, position))
+                            continue;
+                        else
+                        {
+                            positions[i] = position;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        return positions;
+    }
+
+    public static boolean checkIfPositionExists(int[] positions, int position)
+    {
+        for(int i = 0; i < positions.length; i++)
+        {
+            if(positions[i] == position)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+
+
 
     public static void updateDriversFromRace(int idShoferi, ArrayList<Formula1Shofer> drivers, int pozicioni){
 
@@ -132,6 +313,10 @@ public class Gara implements Serializable {
 
     public String getData() {
         return data;
+    }
+
+    public String getVendndodhja() {
+        return vendndodhja;
     }
 
     public int getPozicioni() {

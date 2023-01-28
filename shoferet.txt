@@ -1,3 +1,11 @@
-stivi	bosi	benc	1	0	0	25	1	 
-herta	cota	fiat	0	1	0	18	1	 
-flor	bana	moto	0	0	1	15	1	 
+stivi	bosi	benc	2	1	0	25	3	 
+herta	cota	fiat	1	2	0	18	3	 
+flor	bana	moto	0	0	3	15	3	 
+emiliano	tusha	porsche	0	0	0	0	0	 
+staisy	lom	skuadra66	0	0	0	0	0	 
+pod	ile	skuadra99	0	0	0	0	0	 
+gent	lori	skuadra77	0	0	0	0	0	 
+otto	dualy	skuadra33	0	0	0	0	0	 
+luis	kateshi	audi	0	0	0	0	0	 
+volkswagen	volkswagen	volkswagen	0	0	0	0	0	 
+endri	simoni	Rover	0	0	0	0	0	 
