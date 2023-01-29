@@ -34,6 +34,24 @@ public class MyFrame extends JFrame {
                 FrameButton1 var = new FrameButton1(Gara.generateRandomRace(races, drivers));
             }
         });
+        button2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Formula1Shofer.SortShoferetByActualPointsDESC(drivers);
+                FrameButton2 var = new FrameButton2(drivers);
+            }
+        });
+        button3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Formula1Shofer.SortShoferetByActualPointsASC(drivers);
+                FrameButton3 var = new FrameButton3(drivers);
+            }
+        });
+        button4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Formula1Shofer.SortShoferetByNrVendeTeParaDESC(drivers);
+                FrameButton4 var = new FrameButton4(drivers);
+            }
+        });
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(300, 300);

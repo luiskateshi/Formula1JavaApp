@@ -22,8 +22,6 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
             char komanda = sc.next().charAt(0);
             m.doMenu(komanda);
         }
-
-
     }
 
     static void ShfaqMenune(){
@@ -61,13 +59,19 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
                 Formula1Shofer.ShfaqStatistikaShoferi(drivers);
                 break;
             case '5':
-                Formula1Shofer.ShfaqStatistikaTeGjitheShoferetActualPointsDSC(drivers);
+                Formula1Shofer.SortShoferetByActualPointsDESC(drivers);
+                Formula1Shofer.ShfaqStatistikaTeGjitheShoferet(drivers);
                 break;
             case '6':
                 Gara.addRace(races, drivers);
                 break;
             case '7':
-                Formula1Shofer.ShfaqStatistikaTeGjitheShoferetActualPointsASC(drivers);
+                Formula1Shofer.SortShoferetByActualPointsASC(drivers);
+                Formula1Shofer.ShfaqStatistikaTeGjitheShoferet(drivers);
+                break;
+            case '0':
+                Formula1Shofer.SortShoferetByNrVendeTeParaDESC(drivers);
+                Formula1Shofer.ShfaqStatistikaTeGjitheShoferet(drivers);
                 break;
             case 's':
                 SaveData();
@@ -77,7 +81,6 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
                 System.out.println("Ju keni perfunduar punen me programin!");
                 System.exit(0);
                 break;
-
             case '8':
                 ArrayList<Gara> g = new ArrayList<>();
                 g = Gara.generateRandomRace(races, drivers);
@@ -90,7 +93,6 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
                 races.addAll(g1);
                 System.out.println(g1);
                 break;
-
             case 'r':
                 MyFrame frame = new MyFrame(races, drivers);
                 break;

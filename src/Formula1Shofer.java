@@ -48,14 +48,14 @@ public class Formula1Shofer extends Shofer {
 
         var shoferi = new Formula1Shofer(emri, mbiemri, emriSkuadres);
         drivers.add(shoferi);
-       }
+    }
 
     public static void ShfaqStatistikaShoferi(ArrayList<Formula1Shofer> drivers){
         Scanner in=new Scanner(System.in);
         System.out.println("Zgjidh shoferin per te cilin deshironi te shfaqni statistikat sipas numrit ne te majte: ");
         int i = 0;
         for (Formula1Shofer x : drivers) {
-            System.out.println(i + " - " + x.getEmri().toString() + " " + x.getMbiemri().toString() + " " + x.getEmriSkuadres().toString());
+            System.out.println(i + " - " + x.getEmri() + " " + x.getMbiemri() + " " + x.getEmriSkuadres());
             i++;
         }
         int zgjedhja = in.nextInt();
@@ -63,27 +63,19 @@ public class Formula1Shofer extends Shofer {
         System.out.println(z);
     }
 
-    public static void ShfaqStatistikaTeGjitheShoferetActualPointsDSC(ArrayList<Formula1Shofer> shoferi){
-        Collections.sort(shoferi, new Formula1ShoferComparatorByActualPoints());
-        for (Formula1Shofer z : shoferi)
-            System.out.println(z);
+    public static void SortShoferetByActualPointsDESC(ArrayList<Formula1Shofer> shoferi){
+        shoferi.sort(new Formula1ShoferComparatorByActualPoints());
     }
 
-    public static void ShfaqStatistikaTeGjitheShoferetActualPointsASC(ArrayList<Formula1Shofer> shoferi){
-        Collections.sort(shoferi, Collections.reverseOrder(new Formula1ShoferComparatorByActualPoints()));
-        for (Formula1Shofer z : shoferi)
-            System.out.println(z);
+    public static void SortShoferetByActualPointsASC(ArrayList<Formula1Shofer> shoferi){
+        shoferi.sort(Collections.reverseOrder(new Formula1ShoferComparatorByActualPoints()));
     }
 
-    public static void ShfaqStatistikaTeGjitheShoferetNrVendeTeParaDESC(ArrayList<Formula1Shofer> shoferi){
-        Collections.sort(shoferi, new Formula1ShoferComparatorByNrVendeTePara());
-        for (Formula1Shofer z : shoferi)
-            System.out.println(z);
+    public static void SortShoferetByNrVendeTeParaDESC(ArrayList<Formula1Shofer> shoferi){
+        shoferi.sort(new Formula1ShoferComparatorByNrVendeTePara());
     }
 
     public static void ShfaqStatistikaTeGjitheShoferet(ArrayList<Formula1Shofer> shoferi){
-
-
         for (Formula1Shofer z : shoferi)
             System.out.println(z);
     }
