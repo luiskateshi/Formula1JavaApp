@@ -1,19 +1,19 @@
-import java.awt.Dimension;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 //import class Gara from src\Gara.java
 
 
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class FrameButton1 {
+    private JButton confirmButton;
+
     public FrameButton1(ArrayList<Gara> races) {
-        // create an ArrayList of User objects
 
-
-        // create a table model
+        // kolonat e tabeles JTable
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Data");
         model.addColumn("Vendodhja");
@@ -21,22 +21,45 @@ public class FrameButton1 {
         model.addColumn("Emri i skuadres");
         model.addColumn("Pozicioni");
 
-        // populate the model with data from the ArrayList
+        //popullimi i modelit me te dhena nga ArrayList
         for (Gara race : races) {
             Object[] row = {race.getData(), race.getVendndodhja(), race.getEmriShoferit(), race.getEmriSkuadres(), race.getPozicioni()};
             model.addRow(row);
         }
 
-        // create a JTable and set its model
+        //vendosja e modelit ne JTable
         JTable table = new JTable(model);
 
         // create a JFrame and add the JTable to it
         JFrame frame = new JFrame("Tabela e garave te gjeneruara rastesisht");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(new JScrollPane(table));
+        frame.add(new JScrollPane(table), BorderLayout.CENTER);
+        confirmButton = new JButton("Konfirmo");
+        frame.add(confirmButton, BorderLayout.SOUTH);
         frame.setPreferredSize(new Dimension(450, 200));
         frame.pack();
         frame.setVisible(true);
+
+        //confirmButton
+        confirmButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                //ketu do te shtojme garat e kujuara ne menyre te rastesishme ne arrayList races
+                MenaxhimKampionatiFormula1.races.addAll(races);
+                //ketu behet update cdo shofer qe mori pjese ne gare ne arrayList drivers
+                int i=0;
+                for(Formula1Shofer driver : MenaxhimKampionatiFormula1.drivers)
+                {
+                    Gara.updateDriversFromRace(i, MenaxhimKampionatiFormula1.drivers, races.get(i).getPozicioni());
+                    i++;
+                }
+                //shfaq nje mesazh
+                JOptionPane.showMessageDialog(null, "Gara e krijuar u shtua ne memorje. Shtypni save per te ruajtur ndryshimet ne file.");
+                //mbyll frame
+                frame.dispose();
+
+            }
+        });
     }
 
 }

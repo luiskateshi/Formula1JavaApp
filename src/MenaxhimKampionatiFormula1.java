@@ -8,8 +8,8 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
     int nrShofereve;
     int nrSkuadrave;
     private static Scanner sc = new Scanner(System.in);
-    ArrayList<Gara> races = new ArrayList<>();
-    ArrayList<Formula1Shofer> drivers = new ArrayList<>();
+    public static ArrayList<Gara> races = new ArrayList<>();
+    public static ArrayList<Formula1Shofer> drivers = new ArrayList<>();
     public static void main(String[] args) {
 
 
@@ -22,6 +22,8 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
             char komanda = sc.next().charAt(0);
             m.doMenu(komanda);
         }
+
+
     }
 
     static void ShfaqMenune(){
@@ -69,7 +71,7 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
                 Formula1Shofer.SortShoferetByActualPointsASC(drivers);
                 Formula1Shofer.ShfaqStatistikaTeGjitheShoferet(drivers);
                 break;
-            case '0':
+            case '8':
                 Formula1Shofer.SortShoferetByNrVendeTeParaDESC(drivers);
                 Formula1Shofer.ShfaqStatistikaTeGjitheShoferet(drivers);
                 break;
@@ -80,18 +82,6 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
             case 'x':
                 System.out.println("Ju keni perfunduar punen me programin!");
                 System.exit(0);
-                break;
-            case '8':
-                ArrayList<Gara> g = new ArrayList<>();
-                g = Gara.generateRandomRace(races, drivers);
-                races.addAll(g);
-                System.out.println(g);
-                break;
-            case   '9':
-                ArrayList<Gara> g1 = new ArrayList<>();
-                g1 = Gara.generateRandomRaceProbability(races, drivers);
-                races.addAll(g1);
-                System.out.println(g1);
                 break;
             case 'r':
                 MyFrame frame = new MyFrame(races, drivers);
@@ -125,7 +115,7 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
         System.out.println("Infos u lexuan me sukses nga file.");
 
     }
-    public void SaveData(){
+    public static void SaveData(){
 
         //Vendosja e cdo informacioni te futur nga user-i deri ne kete moment nga objekt-vektori ArrayList<Gara> races ne file-in "garat.txt"
         try {

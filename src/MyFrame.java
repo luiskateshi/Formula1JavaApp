@@ -2,8 +2,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.JFrame;
-import javax.swing.JButton;
+import javax.swing.*;
 
 public class MyFrame extends JFrame {
     private JButton button1;
@@ -13,22 +12,25 @@ public class MyFrame extends JFrame {
     private JButton button5;
     private JButton button6;
     private JButton button7;
+    private JButton button8;
     public MyFrame(ArrayList<Gara> races, ArrayList<Formula1Shofer> drivers) {
         setLayout(new GridLayout(3, 3));
-        button1 = new JButton("Button 1");
+        button1 = new JButton("Gjenero gare rastesore");
         add(button1);
-        button2 = new JButton("Button 2");
+        button2 = new JButton("Shfaq Shoferet (DESC sipas pikeve)");
         add(button2);
-        button3 = new JButton("Button 3");
+        button3 = new JButton("Shfaq Shoferet (ASC sipas pikeve)");
         add(button3);
-        button4 = new JButton("Button 4");
+        button4 = new JButton("Shfaq Shoferet (DESC sipas fitoreve)");
         add(button4);
-        button5 = new JButton("Button 5");
+        button5 = new JButton("Gjenero gare me probabilitet");
         add(button5);
         button6 = new JButton("Button 6");
         add(button6);
         button7 = new JButton("Button 7");
         add(button7);
+        button8 = new JButton("SAVE");
+        add(button8);
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 FrameButton1 var = new FrameButton1(Gara.generateRandomRace(races, drivers));
@@ -52,9 +54,16 @@ public class MyFrame extends JFrame {
                 FrameButton4 var = new FrameButton4(drivers);
             }
         });
+        button8.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                MenaxhimKampionatiFormula1.SaveData();
+                //shfaq nje mesazh qe te dhenat u ruajten
+                JOptionPane.showMessageDialog(null, "Te dhenat u ruajten ne file.");
+            }
+        });
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(300, 300);
+        setSize(900, 900);
         setVisible(true);
     }
 

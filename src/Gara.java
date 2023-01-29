@@ -167,6 +167,7 @@ public class Gara implements Serializable {
         int i = 0;
         for (Formula1Shofer x : drivers) {
             tempGara.add(new Gara(data.toString(), Vendodhja, x.getEmri(), x.getEmriSkuadres(), FinishPositions[StartPositions[i]-1]));
+            updateDriversFromRace(i, drivers, FinishPositions[StartPositions[i]-1]);
             i++;
         }
 
