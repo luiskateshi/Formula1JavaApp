@@ -2,10 +2,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 import static java.lang.System.in;
 
@@ -311,6 +308,8 @@ public class Gara implements Serializable {
     }
 
 
+
+
     public String getData() {
         return data;
     }
@@ -329,5 +328,29 @@ public class Gara implements Serializable {
 
     public String getEmriSkuadres() {
         return emriSkuadres;
+    }
+
+    public static void Renditje(ArrayList<Gara> gara) {
+        Collections.sort(gara, new RenditjaGaraCompare());
+        for (Gara a : gara)
+            System.out.println(a);
+
+
+    }
+
+    public static void shfaqGarat(ArrayList<Gara> gara) {
+        Scanner in=new Scanner(System.in);
+        System.out.println("Vendos emrin e shoferit");
+        String emri = in.next();
+        for (Gara a : gara) {
+            if (a.getEmriShoferit().equalsIgnoreCase(emri)) {
+                System.out.println(a);
+            }
+        }
+    }
+    @Override
+    public String toString(){
+        return "Data: " + getData() + "\tVendndodhja: "+ getVendndodhja() + "\tEmri: " + getEmriShoferit() + "\tSkuadra: " +
+                getEmriSkuadres() + "\tPozicioni: " + getPozicioni();
     }
 }

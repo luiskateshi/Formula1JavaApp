@@ -1,4 +1,6 @@
+
 import java.util.*;
+
 
 //hello world
 public class Formula1Shofer extends Shofer {
@@ -75,6 +77,10 @@ public class Formula1Shofer extends Shofer {
 
     public static void ShfaqStatistikaTeGjitheShoferetNrVendeTeParaDESC(ArrayList<Formula1Shofer> shoferi){
         Collections.sort(shoferi, new Formula1ShoferComparatorByNrVendeTePara());
+        for (Formula1Shofer z : shoferi)
+            System.out.println(z);
+    }
+
     public static void ShfaqStatistikaTeGjitheShoferet(ArrayList<Formula1Shofer> shoferi){
 
 

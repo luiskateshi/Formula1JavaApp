@@ -1,5 +1,3 @@
-import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.io.*;
 import java.util.*;
 
@@ -71,13 +69,6 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
             case '7':
                 Formula1Shofer.ShfaqStatistikaTeGjitheShoferetActualPointsASC(drivers);
                 break;
-            case '8':
-                Formula1Shofer.ShfaqStatistikaTeGjitheShoferetNrVendeTeParaDESC(drivers);
-                break;
-            /*case '8':
-                Gara.shfaqGarat(races);
-                Gara.Renditje(races);
-                break;*/
             case 's':
                 SaveData();
                 SaveDataShofer();
@@ -90,12 +81,18 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
             case '8':
                 ArrayList<Gara> g = new ArrayList<>();
                 g = Gara.generateRandomRace(races, drivers);
+                races.addAll(g);
                 System.out.println(g);
                 break;
             case   '9':
                 ArrayList<Gara> g1 = new ArrayList<>();
                 g1 = Gara.generateRandomRaceProbability(races, drivers);
+                races.addAll(g1);
                 System.out.println(g1);
+                break;
+
+            case 'r':
+                MyFrame frame = new MyFrame(races, drivers);
                 break;
             default:
                 System.out.println("Funksioni i kerkuar nuk ekziston, provoni perseri!");
