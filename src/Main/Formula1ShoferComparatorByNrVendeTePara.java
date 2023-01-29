@@ -1,3 +1,5 @@
+package Main;
+
 import java.util.Comparator;
 
 public class Formula1ShoferComparatorByNrVendeTePara implements Comparator<Formula1Shofer> {

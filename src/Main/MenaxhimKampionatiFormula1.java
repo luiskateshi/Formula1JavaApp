@@ -1,3 +1,5 @@
+package Main;
+
 import java.io.*;
 import java.util.*;
 
@@ -94,7 +96,7 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
 
     public void LoadData(){
 
-        //Leximi i File-it "garat.txt" dhe vendosja e informacionit ne objekt-vektorin ArrayList<Gara> races
+        //Leximi i File-it "garat.txt" dhe vendosja e informacionit ne objekt-vektorin ArrayList<Main.Gara> races
         try {
             FileReader fr = new FileReader(file2);
             BufferedReader input = new BufferedReader(fr);
@@ -117,7 +119,7 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
     }
     public static void SaveData(){
 
-        //Vendosja e cdo informacioni te futur nga user-i deri ne kete moment nga objekt-vektori ArrayList<Gara> races ne file-in "garat.txt"
+        //Vendosja e cdo informacioni te futur nga user-i deri ne kete moment nga objekt-vektori ArrayList<Main.Gara> races ne file-in "garat.txt"
         try {
             FileWriter fw = new FileWriter(file2);
             Writer output = new BufferedWriter(fw);
@@ -138,7 +140,7 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
 
     public void LoadDataShofer(){
 
-        //Leximi i File-it "garat.txt" dhe vendosja e informacionit ne objekt-vektorin ArrayList<Gara> races
+        //Leximi i File-it "garat.txt" dhe vendosja e informacionit ne objekt-vektorin ArrayList<Main.Gara> races
         try {
             FileReader fr1 = new FileReader(file1);
             BufferedReader input = new BufferedReader(fr1);
@@ -161,7 +163,7 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
     }
     public static void SaveDataShofer(){
 
-        //Vendosja e cdo informacioni te futur nga user-i deri ne kete moment nga objekt-vektori ArrayList<Gara> races ne file-in "garat.txt"
+        //Vendosja e cdo informacioni te futur nga user-i deri ne kete moment nga objekt-vektori ArrayList<Main.Gara> races ne file-in "garat.txt"
         try {
 
             FileWriter fw1 = new FileWriter(file1);

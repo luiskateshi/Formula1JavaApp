@@ -1,3 +1,9 @@
+package Gui;
+
+import Main.Formula1Shofer;
+import Main.Gara;
+import Main.MenaxhimKampionatiFormula1;
+
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -57,6 +63,17 @@ public class MyFrame extends JFrame {
         button5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 FrameButton5 var = new FrameButton5(Gara.generateRandomRaceProbability(races, drivers));
+            }
+        });
+        button6.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                FrameButton6 ren = new FrameButton6(Gara.Renditje(races));
+            }
+        });
+        button7.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String z = JOptionPane.showInputDialog("Vendos Emrin e Garuesit");
+                FrameButton7 shf = new FrameButton7(Gara.shfaqGarat(races,z));
             }
         });
         button8.addActionListener(new ActionListener() {

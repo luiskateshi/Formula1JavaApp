@@ -31,3 +31,14 @@
 14/1/2006	Tirana	luis	audi	10
 14/1/2006	Tirana	volkswagen	volkswagen	2
 14/1/2006	Tirana	endri	Rover	11
+26/12/2000	Korça	stivi	benc	9
+26/12/2000	Korça	herta	fiat	11
+26/12/2000	Korça	flor	moto	5
+26/12/2000	Korça	emiliano	porsche	2
+26/12/2000	Korça	staisy	skuadra66	4
+26/12/2000	Korça	pod	skuadra99	7
+26/12/2000	Korça	gent	skuadra77	10
+26/12/2000	Korça	otto	skuadra33	8
+26/12/2000	Korça	luis	audi	6
+26/12/2000	Korça	volkswagen	volkswagen	1
+26/12/2000	Korça	endri	Rover	3

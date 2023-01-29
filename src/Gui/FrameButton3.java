@@ -1,10 +1,14 @@
+package Gui;
+
+import Main.Formula1Shofer;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class FrameButton4 {
-    public FrameButton4(ArrayList<Formula1Shofer> drivers) {
+public class FrameButton3 {
+    public FrameButton3(ArrayList<Formula1Shofer> drivers) {
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Emri");
         model.addColumn("Mbiemri");
@@ -25,7 +29,7 @@ public class FrameButton4 {
         JTable table = new JTable(model);
 
         // create a JFrame and add the JTable to it
-        JFrame frame = new JFrame("Tabela e shofereve te renditur sipas nr. te vendeve 1 (ne rend zbrites) ");
+        JFrame frame = new JFrame("Tabela e shofereve te renditur sipas pikeve (ne rend rrites) ");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(new JScrollPane(table));
         frame.setPreferredSize(new Dimension(800, 200));

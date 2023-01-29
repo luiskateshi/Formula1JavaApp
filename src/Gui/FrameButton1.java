@@ -1,17 +1,23 @@
+package Gui;
+
+import Main.Formula1Shofer;
+import Main.Gara;
+import Main.MenaxhimKampionatiFormula1;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-//import class Gara from src\Gara.java
+//import class Main.Gara from src\Main.Gara.java
 
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-public class FrameButton5 {
+public class FrameButton1 {
     private JButton confirmButton;
 
-    public FrameButton5(ArrayList<Gara> races) {
+    public FrameButton1(ArrayList<Gara> races) {
 
         // kolonat e tabeles JTable
         DefaultTableModel model = new DefaultTableModel();
@@ -54,7 +60,7 @@ public class FrameButton5 {
                     i++;
                 }
                 //shfaq nje mesazh
-                JOptionPane.showMessageDialog(null, "Gara e krijuar u shtua ne memorje. Shtypni save per te ruajtur ndryshimet ne file.");
+                JOptionPane.showMessageDialog(null, "Main.Gara e krijuar u shtua ne memorje. Shtypni save per te ruajtur ndryshimet ne file.");
                 //mbyll frame
                 frame.dispose();
 

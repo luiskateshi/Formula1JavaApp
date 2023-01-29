@@ -1,7 +1,6 @@
+package Main;
+
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import static java.lang.System.in;
@@ -331,27 +330,26 @@ public class Gara implements Serializable {
         return emriSkuadres;
     }
 
-    public static void Renditje(ArrayList<Gara> gara) {
+    public static ArrayList<Gara> Renditje(ArrayList<Gara> gara) {
+        ArrayList<Gara> temp1 = new ArrayList<>();
+
         Collections.sort(gara, new RenditjaGaraCompare());
         for (Gara a : gara)
-            System.out.println(a);
-
-
+        {
+            temp1.add(a);
+        }
+        return temp1;
     }
 
-    public static void shfaqGarat(ArrayList<Gara> gara) {
-        Scanner in=new Scanner(System.in);
-        System.out.println("Vendos emrin e shoferit");
-        String emri = in.next();
+    public static ArrayList<Gara> shfaqGarat(ArrayList<Gara> gara,String emri) {
+        ArrayList<Gara> temp = new ArrayList<>();
         for (Gara a : gara) {
             if (a.getEmriShoferit().equalsIgnoreCase(emri)) {
-                System.out.println(a);
+                temp.add(a);
             }
         }
+        return temp;
     }
-    @Override
-    public String toString(){
-        return "Data: " + getData() + "\tVendndodhja: "+ getVendndodhja() + "\tEmri: " + getEmriShoferit() + "\tSkuadra: " +
-                getEmriSkuadres() + "\tPozicioni: " + getPozicioni();
-    }
+
+
 }

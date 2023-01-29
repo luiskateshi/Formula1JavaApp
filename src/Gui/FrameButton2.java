@@ -1,3 +1,7 @@
+package Gui;
+
+import Main.Formula1Shofer;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
