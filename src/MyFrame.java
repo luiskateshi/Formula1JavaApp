@@ -54,9 +54,15 @@ public class MyFrame extends JFrame {
                 FrameButton4 var = new FrameButton4(drivers);
             }
         });
+        button5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                FrameButton5 var = new FrameButton5(Gara.generateRandomRaceProbability(races, drivers));
+            }
+        });
         button8.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 MenaxhimKampionatiFormula1.SaveData();
+                MenaxhimKampionatiFormula1.SaveDataShofer();
                 //shfaq nje mesazh qe te dhenat u ruajten
                 JOptionPane.showMessageDialog(null, "Te dhenat u ruajten ne file.");
             }

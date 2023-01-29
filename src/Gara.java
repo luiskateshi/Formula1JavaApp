@@ -162,12 +162,12 @@ public class Gara implements Serializable {
         String data = generateRadnomDate();
         String Vendodhja = generateRandomCity();
         int StartPositions[] = generateRandomPositions(nrPjesmarresve);
+        System.out.println("StartPositions: " + Arrays.toString(StartPositions));
         int FinishPositions[] = generateFinishPositionsWithProbability(fillProbabilityArray(), nrPjesmarresve);
 
         int i = 0;
         for (Formula1Shofer x : drivers) {
             tempGara.add(new Gara(data.toString(), Vendodhja, x.getEmri(), x.getEmriSkuadres(), FinishPositions[StartPositions[i]-1]));
-            updateDriversFromRace(i, drivers, FinishPositions[StartPositions[i]-1]);
             i++;
         }
 

@@ -159,7 +159,7 @@ public class MenaxhimKampionatiFormula1 implements MenaxhimKampionati {
         System.out.println("Infos u lexuan me sukses nga file.");
 
     }
-    public void SaveDataShofer(){
+    public static void SaveDataShofer(){
 
         //Vendosja e cdo informacioni te futur nga user-i deri ne kete moment nga objekt-vektori ArrayList<Gara> races ne file-in "garat.txt"
         try {
